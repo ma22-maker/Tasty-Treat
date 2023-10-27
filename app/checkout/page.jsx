@@ -94,8 +94,7 @@ function page() {
       </div>
       <div  className="bg-slate-50" >
       <div className="grid grid-cols-2 md:grid-cols-6 sm:grid-cols-2 mx-16 my-8 ">
-        <div className="md:col-span-4 sm:col-span-2 ">
-          <div className="flex-col">
+        <div className="md:col-span-4 sm:col-span-2 order-2  flex-col sm:order-2  md:order-1  col-span-2">
             <p className="font-semibold text-xl">Shipping Address</p>
             <form onSubmit={handleSubmit}>
               <div>
@@ -202,9 +201,8 @@ function page() {
                 Payment
               </button>
             </form>
-          </div>
         </div>
-        <div className="flex flex-col md:col-span-2 sm:col-span-2 bg-red-200 w-[78%] h-36 p-6 m-4">
+        <div className="flex flex-col   order-1 col-span-2  sm:order-1  md:order-2 md:col-span-2 sm:col-span-2 bg-red-200 w-[78%] h-36 p-6 m-4">
           <div className="flex justify-between my-1">
             <p className="font-bold">Subtotal :</p>
             <p className="font-bold">${calculateSubtotal(Cartdata)}</p>
@@ -216,7 +214,7 @@ function page() {
           <div className="flex justify-between border-t-2 border-gray-500 border-opacity-10 pt-2">
             <p className="font-bold text-xl">Total :</p>
             <p className="font-bold text-xl">
-              ${30 + calculateSubtotal(Cartdata)}
+              ${  Cartdata.length>0? 30 + calculateSubtotal(Cartdata) : 0}
             </p>
           </div>
         </div>

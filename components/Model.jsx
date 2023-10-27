@@ -40,7 +40,7 @@ const handelsubract=(ItemId)=>{
   }
   return (
     <div className={`modal ${isopen ? "modal-open" : ""}`}>
-      <div className="fixed top-0 right-0 w-[27%] h-full bg-white opacity-3 overflow-y-auto transition-all duration-600 flex flex-col z-10">
+      <div className="fixed top-0 right-0 w-[27%]  max-[1024px]:w-[35%] max-[768px]:w-[45%] max-[425px]:w-full h-full bg-white opacity-3  transition-all duration-600 flex flex-col">
         <button className="py-3 px-3" onClick={handelmodelClose}>
           <RxCross2
             size={20}
@@ -48,7 +48,7 @@ const handelsubract=(ItemId)=>{
             className=" w-7 h-7 p-1 rounded-full bg-indigo-950"
           />
         </button>
-        <div className="px-3">
+        <div className="px-3 overflow-y-auto z-10">
           {Cartdata.map((item, index) => (
             <div className="flex justify-between items-center my-7">
               <div key={item.id} className="flex  space-x-4 ">
@@ -79,8 +79,9 @@ const handelsubract=(ItemId)=>{
               </div>
             </div>
           ))}
-        </div>
-        <div className=" absolute bottom-0 right-0 w-full h-20 bg-red-600 flex flex-row justify-between items-center p-6">
+        </div>      
+      </div>
+      <div className=" fixed bottom-0 right-0 w-[27%] max-[1024px]:w-[35%] max-[768px]:w-[45%] max-[425px]:w-full h-20 z-0 bg-red-600 flex flex-row justify-between items-center p-6">
           <p className="text-white font-bold text-sm">
             Subtotal : ${calculateSubtotal(Cartdata)}
           </p>
@@ -89,7 +90,6 @@ const handelsubract=(ItemId)=>{
             Checkout
           </button></Link>         
         </div>
-      </div>
     </div>
   );
 }

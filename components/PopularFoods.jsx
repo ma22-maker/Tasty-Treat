@@ -65,8 +65,8 @@ function PopularFoods() {
                 alt={product.title}
                 className="w-32 h-32 "
               />
-              <div className="px-6 py-4">
-                <div className="font-semibold text-xl  mb-2 text-center">{product.title}</div>
+              <div className="lg:px-6 md:px-3 px-2 py-4">
+                <div className="font-bold md:text-md  mb-2 text-centerr">{product.title}</div>
               </div>
               </div>
               <div className="flex flex-row justify-between">
