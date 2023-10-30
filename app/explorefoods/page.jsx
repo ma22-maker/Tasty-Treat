@@ -11,13 +11,18 @@ import{LiaSearchSolid} from "react-icons/lia"
 
 function page() {
   const dispatch = useDispatch();
+  const [isplaced, Setisplaced] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortOrder, setSortOrder] = useState('default');
 
   const handleAddToCart = (product) => {
     console.log("add to cart");
+    Setisplaced(true);
     const { image01, title, id, price } = product;
     dispatch(addtoCart_SUCCESS({ image01, title, id, price, quantity: 1 }));
+    setTimeout(() => {
+      Setisplaced(false);
+    }, 3000);
   };
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -50,6 +55,15 @@ const renderfood = sortOrder === ("asc"||"desc")?sortedProducts : filterProducts
 
   return (
     <BaseLayout>
+     {isplaced && (
+        <div
+          className={`toast toast-center toast-top rounded-md m-3 bg-red-600 text-white w-auto transition-opacity duration-300 ease-in-out ${
+            isplaced ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <span>Added to the cart!</span>
+        </div>
+      )}
     <div className=" min-[425px]:hidden max-[425px]:visible  bg-slate-50 shadow-lg max-[425px]:my-3">
         <input
           type="text"

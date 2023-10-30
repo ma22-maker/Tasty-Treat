@@ -50,6 +50,14 @@ function page() {
     }
 
     if (Object.keys(newErrors).length === 0) {
+      setDetails({
+        name: "",
+        email: "",
+        phoneNumber: "",
+        country: "",
+        city: "",
+        postalCode: "",
+      })
       dispatch(Clearcark())
       Setisplaced(true);
       setTimeout(() => {
@@ -59,14 +67,7 @@ function page() {
 
     seterrors(newErrors);
 
-    setDetails({
-      name: "",
-      email: "",
-      phoneNumber: "",
-      country: "",
-      city: "",
-      postalCode: "",
-    })
+   
   };
 
   //console.log(errors);

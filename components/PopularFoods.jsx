@@ -12,6 +12,7 @@ import { addtoCart_SUCCESS } from "@/store/reduxstore";
 function PopularFoods() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const dispatch = useDispatch();
+  const [isplaced, Setisplaced] = useState(false);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
@@ -29,14 +30,28 @@ function PopularFoods() {
 
 
       const handleAddToCart = (product) => {
+        Setisplaced(true);
         console.log("add to cart")
         const { image01, title, id, price } = product;
         dispatch(addtoCart_SUCCESS({ image01, title, id, price, quantity: 1 }));
+        setTimeout(() => {
+          Setisplaced(false);
+        }, 3000);
       };
 
 
 
   return (
+    <>
+     {isplaced && (
+        <div
+          className={`toast toast-center toast-top rounded-md m-3 bg-red-600 text-white w-auto transition-opacity duration-300 ease-in-out ${
+            isplaced ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <span>Added to the cart!</span>
+        </div>
+      )}
     <div className=" bg-slate-50 shadow-lg my-1 mb-4">
         <div className="font-bold text-3xl text-center py-8">Popular Foods</div>
         <div className="flex flex-row justify-center items-center width-full bg-red-500 h-16 rounded-md mx-5">
@@ -82,7 +97,7 @@ function PopularFoods() {
         </div>
       </div>
       </div>
-
+</>
   );
 }
 

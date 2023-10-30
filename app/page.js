@@ -9,10 +9,11 @@ import category2 from "../assets/assets/images/category-02.png";
 import category3 from "../assets/assets/images/category-03.png";
 import category4 from "../assets/assets/images/category-04.png";
 import PopularFoods from "../components/PopularFoods";
-
 import Link from "next/link";
 import { Margarine } from "next/font/google";
+
 export default function Home() {
+
   return (
     <>
       <BaseLayout>
